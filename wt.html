@@ -1,0 +1,108 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('login pic.PNG'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    form {
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow effect */
+        max-width: 600px;
+        width: 100%;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="submit"],
+    input[type="password"]{
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 10px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    input[type="submit"] {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #45a049; /* Darker green background on hover */
+    }
+    
+</style>
+<script>
+    function validateForm() {
+       // var name = document.forms["myForm"]["name"].value;
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+       // var email = document.forms["myForm"]["email"].value;
+       var pwd = document.getElementById("pwd").value;
+         //var password = document.forms["myForm"]["password"].value;
+
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for email validation
+        
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("pwdError").textContent = "";
+        if (name == "") {
+            alert("Name must be filled out");
+            return false;
+        }
+        if (email == "") {
+            alert("Email must be filled out");
+            return false;
+        }
+        if (!emailPattern.test(email)) {
+            alert("Invalid email format");
+            return false;
+        }
+        if (password == "") {
+            alert("Password must be filled out");
+            return false;
+        
+        // If all validation passes, you can submit the form
+        return true;
+    }
+</script>
+</head>
+<body>
+
+
+
+<form name="myForm" onsubmit="return validateForm(/)" method="post">
+    <label for="name" class="required">Name:</label><br>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+    <label for="email" class="required">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+    
+    <label for="password" class="required">Password:</label><br>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
+    
+   
+    
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
